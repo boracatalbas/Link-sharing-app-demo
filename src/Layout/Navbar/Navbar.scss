@@ -1,0 +1,39 @@
+.navbar {
+  border: solid 1px red;
+  background-color: white;
+  margin: 3vh 1.5vw 3vh 1.5vw;
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+  .mid-buttons {
+    display: flex;
+    padding: 0.8vh 0.8vw;
+
+    button {
+      display: flex;
+      align-items: center;
+      border: none;
+      margin: 0 1vw;
+      padding: 1vh 1vw;
+      font-size: 1rem;
+      font-weight: 700;
+      color: gray;
+      img {
+        margin: 0 1vw;
+      }
+      &:hover {
+        background-color: #c9bef4;
+        border-radius: 5px;
+        color: #7960e0;
+      }
+    }
+  }
+  .preview {
+    padding: 2vh 2vw;
+    font-size: 1rem;
+    border: solid 1px #7960e0;
+    border-radius: 5px;
+    color: #7960e0;
+  }
+}
