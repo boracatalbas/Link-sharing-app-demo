@@ -1,34 +1,26 @@
 const express = require("express");
-const { connectToDb, getDb } = require("./db");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const LinkModel = require("./models/Links");
 
-// init app & middleware
 const app = express();
+app.use(cors());
+app.use(express.json());
 
-// db connection
-let db;
+mongoose.connect("mongodb://127.0.0.1:27017/devlinks");
 
-connectToDb((err) => {
-  !err
-    ? app.listen(3000, () => {
-        console.log("app on 3000");
-        db = getDb();
-      })
-    : "";
+app.get("/", (req, res) => {
+  LinkModel.find({})
+    .then((users) => res.json(users))
+    .catch((err) => res.json(err));
 });
 
-//routes
-app.get("/books", (req, res) => {
-  let books = [];
-  db.collection("books")
-    .find()
-    .sort({ author: 1 })
-    .forEach((book) => books.push(book))
-    .then(() => {
-      res
-        .status(200)
-        .json(books)
-        .catch(() => {
-          res.status(500).json({ error: "could not fetch the documents" });
-        });
-    });
+app.post("/createlinks", (req, res) => {
+  LinkModel.create(req.body)
+    .then((links) => res.json(links))
+    .catch((err) => res.json(err));
+});
+
+app.listen(3001, () => {
+  console.log("server is running");
 });

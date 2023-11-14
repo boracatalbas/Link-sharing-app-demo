@@ -7,12 +7,36 @@ import twitch from "../../assets/images/icon-twitch.svg";
 import twitter from "../../assets/images/icon-twitter.svg";
 import youtube from "../../assets/images/icon-youtube.svg";
 import linkIcon from "../../assets/images/icon-links-header.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Content() {
   const [isClicked, setIsClicked] = useState(false);
   const [selectedPlatform, setSelectedPlatform] = useState("Github");
-  const [link, setLink] = useState("");
+  const [platforms, setPlatforms] = useState([]);
+  const [links, setLink] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001")
+      .then((res) => setLink(res.data.links))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const Submit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3001/createLinks", {
+        platform: selectedPlatform,
+        links,
+      })
+      .then((res) => {
+        console.log(res);
+        setLink([...links, { platform: selectedPlatform, links }]);
+        setPlatforms([...platforms, selectedPlatform]);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const handleSelectPlatform = (platform) => {
     setSelectedPlatform(platform);
@@ -63,7 +87,7 @@ export default function Content() {
           </button>
           {isClicked && (
             <div className="dropdown-menu">
-              <button onClick={() => handleSelectPlatform("Facebook")}>
+              {/* <button onClick={() => handleSelectPlatform("Facebook")}>
                 <img src={facebook} alt="facebook" /> Facebook
               </button>
               <button onClick={() => handleSelectPlatform("Twitter")}>
@@ -80,19 +104,29 @@ export default function Content() {
               <button onClick={() => handleSelectPlatform("Twitch")}>
                 <img src={twitch} alt="twitch" />
                 Twitch
-              </button>
+              </button> */}
+              {platforms.map((platform, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleSelectPlatform(platform)}
+                >
+                  <img src={getPlatformImage(platform)} alt={platform} />
+                  {platform}
+                </button>
+              ))}
             </div>
           )}
           <h3>Link</h3>
           <div className="enter-link">
             <img src={linkIcon} alt="" />
-            <input
-              type="text"
-              value={link}
-              onChange={(e) => {
-                setLink(e.target.value);
-              }}
-            />
+            <form onSubmit={Submit}>
+              <input
+                type="text"
+                placeholder="enter link"
+                onChange={(e) => setLink(e.target.value)}
+              />
+              <button>Submit</button>
+            </form>
           </div>
         </div>
         <div className="link1">
@@ -133,7 +167,7 @@ export default function Content() {
             <img src={linkIcon} alt="" />
             <input
               type="text"
-              value={link}
+              value={links}
               onChange={(e) => {
                 setLink(e.target.value);
               }}
