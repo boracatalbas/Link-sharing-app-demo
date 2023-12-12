@@ -1,0 +1,57 @@
+.profileDetail {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px red;
+  padding: 5vh 2.5vw;
+  margin: 0 1.5vw 0 0;
+  background-color: white;
+  h1 {
+    font-size: 2rem;
+    font-family: "Instrument Sans Bold", sans-serif;
+    font-weight: 700;
+  }
+  p {
+    font-family: "Instrument Sans Regular", sans-serif;
+    margin-top: 2vh;
+    color: gray;
+  }
+  .picture {
+    margin: 5vh 0 5vh 0;
+    background-color: #f0f0f0;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1vw;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 33% 25% 33%;
+    height: 30vh;
+    img {
+      border: dotted 1px #b9b9b9;
+      height: 25vh;
+      width: 12.5vw;
+    }
+  }
+  .input-wrapper {
+    background-color: #f0f0f0;
+    margin: 2vh 0 5vh 0;
+    padding-left: 1vw;
+    border-radius: 8px;
+    .inputs {
+      display: flex;
+      justify-content: space-between;
+      margin: 4vh 0;
+      background-color: #f0f0f0;
+      input {
+        width: 55%;
+        margin: 0 3vw 0 0;
+        height: 4vh;
+        border-radius: 5px;
+        border: solid 0.5px gray;
+        &:focus {
+          border-color: rgb(230, 0, 255);
+          box-shadow: 0 0 5px rgba(217, 0, 255, 0.5);
+        }
+      }
+    }
+  }
+}

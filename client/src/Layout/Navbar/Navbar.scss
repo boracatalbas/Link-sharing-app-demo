@@ -1,10 +1,12 @@
 .navbar {
+  a {
+    text-decoration: none;
+  }
   border: solid 1px red;
   background-color: white;
-  margin: 3vh 1.5vw 3vh 1.5vw;
+  margin: 3vh 3.5vw 3vh 3.5vw;
   display: flex;
   justify-content: space-between;
-
   align-items: center;
   .mid-buttons {
     display: flex;
@@ -21,10 +23,12 @@
       color: gray;
       img {
         margin: 0 1vw;
+        color: white;
+        background-color: #e5dfff;
       }
-      &:hover {
-        background-color: #c9bef4;
-        border-radius: 5px;
+      &.selected {
+        background-color: #e5dfff;
+        border-radius: 8px;
         color: #7960e0;
       }
     }

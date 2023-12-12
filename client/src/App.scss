@@ -3,4 +3,43 @@
   grid-template-rows: 20vh 80vh;
   height: 100vh;
   width: 100vw;
+  background-color: #f5f5f5;
+}
+/* src/styles/fonts.css */
+
+@font-face {
+  font-family: "Instrument Sans Variable";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/InstrumentSans-VariableFont_wdth,wght.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Instrument Sans Variable Italic";
+  font-weight: normal;
+  font-style: italic;
+  src: url("../fonts/InstrumentSans-Italic-VariableFont_wdth,wght.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Instrument Sans Regular";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/static/InstrumentSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Instrument Sans SemiBold";
+  font-weight: bold;
+  font-style: normal;
+  src: url("../fonts/static/InstrumentSans-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Instrument Sans Bold";
+  font-weight: bold;
+  font-style: normal;
+  src: url("../fonts/static/InstrumentSans-Bold.ttf") format("truetype");
 }

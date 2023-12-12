@@ -1,0 +1,14 @@
+.phone {
+  display: grid;
+  .left {
+    background-color: white;
+    border: solid 1px red;
+    margin: 0 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      height: 60vh;
+    }
+  }
+}

@@ -79,7 +79,6 @@ time,
 mark,
 audio,
 video {
-  background-color: #fafafa;
   margin: 0;
   padding: 0;
   border: 0;
@@ -100,6 +99,7 @@ menu,
 nav,
 section {
   display: block;
+  background-color: #f0f0f0;
 }
 body {
   line-height: 1;
